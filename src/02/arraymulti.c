@@ -25,6 +25,16 @@ void add(int *angka, int baris, int kolom, int x)
 	}
 }
 
+// ukuran array untuk dimensi kedua mesti dituliskan
+void add1(int angka[][5], int baris, int kolom, int x)
+{
+	for (int i = 0; i < baris; i++) {
+		for (int j = 0; j < kolom; j++) {
+			angka[i][j] = angka[i][j] + x;
+		}
+	}
+}
+
 int main()
 {
 	// array 2 dimensi, dimensi pertama 3,
@@ -42,7 +52,7 @@ int main()
 	}
 	printf("=====\n");
 
-	add(&angka[0][0], 3, 5, 10);
+	add1(angka, 3, 5, 10);
 	for (i = 0; i < 3; i++) {
 		for (j = 0; j < 5; j++) {
 			printf("%2d ", angka[i][j]);
