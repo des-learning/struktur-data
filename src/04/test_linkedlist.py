@@ -50,9 +50,9 @@ class TestLinkedList(unittest.TestCase):
         a.insert(1, 8)
         self.assertEqual(aslist(a), [5, 8, 6, 7])
         a.insert(3, 9)
-        self.assertEqual(aslist(a), [5, 8, 6, 9, 7])
+        self.assertEqual(aslist(a), [5, 8, 6, 7, 9])
         a.insert(0, 10)
-        self.assertEqual(aslist(a), [10, 5, 8, 6, 9, 7])
+        self.assertEqual(aslist(a), [10, 5, 8, 6, 7, 9])
 
 def aslist(l):
     return [x for x in l.traverse()]
