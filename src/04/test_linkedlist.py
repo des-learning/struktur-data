@@ -36,11 +36,11 @@ class TestLinkedList(unittest.TestCase):
         a.add(6)
         a.add(7)
         a.remove(1)
-        self.assertEqual(aslist(a), [5, 7])
+        self.assertEqual(a.asList(), [5, 7])
         a.remove(1)
-        self.assertEqual(aslist(a), [5])
+        self.assertEqual(a.asList(), [5])
         a.remove(0)
-        self.assertEqual(aslist(a), [])
+        self.assertEqual(a.asList(), [])
 
     def test_insert(self):
         a = LinkedList()
@@ -48,11 +48,8 @@ class TestLinkedList(unittest.TestCase):
         a.add(6)
         a.add(7)
         a.insert(1, 8)
-        self.assertEqual(aslist(a), [5, 8, 6, 7])
+        self.assertEqual(a.asList(), [5, 8, 6, 7])
         a.insert(3, 9)
-        self.assertEqual(aslist(a), [5, 8, 6, 7, 9])
+        self.assertEqual(a.asList(), [5, 8, 6, 9, 7])
         a.insert(0, 10)
-        self.assertEqual(aslist(a), [10, 5, 8, 6, 7, 9])
-
-def aslist(l):
-    return [x for x in l.traverse()]
+        self.assertEqual(a.asList(), [10, 5, 8, 6, 9, 7])

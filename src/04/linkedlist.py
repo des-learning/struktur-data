@@ -55,6 +55,8 @@ class LinkedList:
             current = current.next
             yield v
 
+    def asList(self):
+        return [x for x in self.traverse()]
+
     def __repr__(self):
-        values = [x for x in self.traverse()]
-        return '<LinkedList: {}>'.format(values)
+        return '<LinkedList: {}>'.format(self.aslist())
