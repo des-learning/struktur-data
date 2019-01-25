@@ -17,3 +17,42 @@ class TestLinkedList(unittest.TestCase):
         self.assertEqual(a.head.next.next.value, 7)
         self.assertEqual(a.tail.value, 7)
         self.assertEqual(a.tail.next, None)
+
+    def test_get(self):
+        a = LinkedList()
+        a.add(5)
+        a.add(6)
+        a.add(7)
+        self.assertEqual(a.get(0), 5)
+        self.assertEqual(a.get(1), 6)
+        self.assertEqual(a.get(2), 7)
+        self.assertEqual(a.get(3), None)
+        self.assertEqual(a.get(10), None)
+        self.assertEqual(a.get(-1), None)
+
+    def test_remove(self):
+        a = LinkedList()
+        a.add(5)
+        a.add(6)
+        a.add(7)
+        a.remove(1)
+        self.assertEqual(aslist(a), [5, 7])
+        a.remove(1)
+        self.assertEqual(aslist(a), [5])
+        a.remove(0)
+        self.assertEqual(aslist(a), [])
+
+    def test_insert(self):
+        a = LinkedList()
+        a.add(5)
+        a.add(6)
+        a.add(7)
+        a.insert(1, 8)
+        self.assertEqual(aslist(a), [5, 8, 6, 7])
+        a.insert(3, 9)
+        self.assertEqual(aslist(a), [5, 8, 6, 9, 7])
+        a.insert(0, 10)
+        self.assertEqual(aslist(a), [10, 5, 8, 6, 9, 7])
+
+def aslist(l):
+    return [x for x in l.traverse()]
