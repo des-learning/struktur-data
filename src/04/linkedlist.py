@@ -38,6 +38,7 @@ class LinkedList:
         return None
 
     def add(self, value):
+        '''add new item into list'''
         # bentuk node baru
         newNode = Node(value)
         addf = self.__add_not_empty
@@ -47,18 +48,21 @@ class LinkedList:
         self.length = self.length + 1
 
     def get(self, index):
+        '''get item in index position in list'''
         node = self.__goto_index(index)
         if node is not None:
             return node.value
         return None
 
     def __insert_before_head(self, value):
+        '''insert new item before head, not to be called from outside'''
         newNode = Node(value)
         newNode.next = self.head
         self.head = newNode
         self.length = self.length + 1
 
     def __insert_middle(self, index, value):
+        '''insert new item in the middle of the list'''
         newNode = Node(value)
         current = self.__goto_index(index-1)
         newNode.next = current.next
@@ -66,6 +70,7 @@ class LinkedList:
         self.length = self.length + 1
 
     def insert(self, index, value):
+        '''insert new item into list before index position'''
         if not self.__index_valid(index):
             return
         if index == 0:
@@ -74,10 +79,12 @@ class LinkedList:
             self.__insert_middle(index, value)
 
     def __remove_head(self):
+        '''remove list head'''
         self.head = self.head.next
         self.length = self.length - 1
 
     def __remove_tail(self):
+        '''remove list tail'''
         # current needs to be before tail
         current = self.__goto_index(self.length-2)
         self.tail = current
@@ -85,11 +92,13 @@ class LinkedList:
         self.length = self.length - 1
 
     def __remove_middle(self, index):
+        '''remove node from the middle of the list'''
         current = self.__goto_index(index-1)
         current.next = current.next.next
         self.length = self.length - 1
 
     def remove(self, index):
+        '''remove node from list'''
         if not self.__index_valid(index):
             return
         # hapus head
@@ -103,6 +112,7 @@ class LinkedList:
             self.__remove_middle(index)
 
     def traverse(self):
+        '''generator, visiting each node of list from head to tail'''
         current = self.head
         while current is not None:
             v = current.value
@@ -110,7 +120,9 @@ class LinkedList:
             yield v
 
     def asList(self):
+        '''return linkedlist as python list'''
         return [x for x in self.traverse()]
 
     def __repr__(self):
+        '''linkedlist string representation'''
         return '<LinkedList: {}>'.format(self.aslist())
