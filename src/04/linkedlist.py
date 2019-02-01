@@ -125,4 +125,4 @@ class LinkedList:
 
     def __repr__(self):
         '''linkedlist string representation'''
-        return '<LinkedList: {}>'.format(self.aslist())
+        return '<LinkedList: {}>'.format(self.asList())

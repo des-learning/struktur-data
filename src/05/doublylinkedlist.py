@@ -38,4 +38,4 @@ class DoublyLinkedList:
         return [x for x in self.traverse()]
 
     def __repr__(self):
-        return '<LinkedList: {}>'.format(self.aslist())
+        return '<LinkedList: {}>'.format(self.asList())
