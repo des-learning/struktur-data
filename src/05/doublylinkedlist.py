@@ -64,20 +64,24 @@ class DoublyLinkedList:
     def remove(self, index):
         if not self.__index_valid(index):
             return
+        # jika item tinggal 1
         if self.length == 1:
             self.head = None
             self.tail = None
         else:
+            # head
             if index == 0:
                 nextNode = self.head.next
-                nextNode.next.prev = None
+                nextNode.prev = None
                 self.head.next = None
                 self.head = nextNode
+            # tail
             elif index == self.length-1:
                 prevNode = self.tail.prev
                 prevNode.next = None
                 self.tail.prev = None
                 self.tail = prevNode
+            # middle
             else:
                 current = self.__goto_index(index-1)
                 nextNode = current.next
