@@ -1,7 +1,7 @@
 import unittest
 from doublylinkedlist import DoublyLinkedList
 
-class test_indexOf(unittest.TestCase):
+class TestIndexOf(unittest.TestCase):
     def test_index(self):
         l = DoublyLinkedList()
         for i in [0, 7, 6, 7, 7, 8, 7]:
