@@ -1,15 +1,20 @@
+from linkedlist import LinkedList
+
 class Queue:
     def __init__(self):
-        pass
+        self.q = LinkedList()
     
     def isEmpty(self):
-        pass
+        return len(self) == 0
 
     def enqueue(self, value):
-        pass
+        self.q.add(value)
 
     def dequeue(self):
-        pass
+        if self.isEmpty(): return None
+        value = self.q.get(0)
+        self.q.remove(0)
+        return value
 
     def __len__(self):
-        pass
+        return len(self.q)
