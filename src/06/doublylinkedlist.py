@@ -92,6 +92,36 @@ class DoublyLinkedList:
                 afterNextNode.prev = current
         self.length = self.length - 1
 
+    # function overloading/overriding, __len__ if magic function
+    # of python that returns length of an object
+    def __len__(self):
+        return self.length
+
+    def indexOf(self, value):
+        # see http://book.pythontips.com/en/latest/enumerate.html
+        for i in enumerate(self.traverse()):
+            if i[1] == value:
+                return i[0]
+        return None
+
+
+    def lastIndexOf(self, value):
+        for i in enumerate(self.traverseReverse()):
+            if i[1] == value:
+                return len(self)-1-i[0]
+        return None
+
+    # traverse linked list from tail to head, yield node value every
+    # iteration
+    def traverseReverse(self):
+        current = self.tail
+        while current is not None:
+            v = current.value
+            current = current.prev
+            yield v
+
+    # traverse linked list from head to tail, yield node valu every
+    # iteration
     def traverse(self):
         current = self.head
         while current is not None:
