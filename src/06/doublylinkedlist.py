@@ -92,6 +92,29 @@ class DoublyLinkedList:
                 afterNextNode.prev = current
         self.length = self.length - 1
 
+    def normalize_index(self, index):
+        if 0 <= index <= self.length:
+            return index
+        if index < 0 and self.length + index >= 0:
+            return self.length + index
+        return None
+
+    def slice(self, start=None, end=None):
+        nStart = self.normalize_index(start) if start is not None else 0
+        nEnd = self.normalize_index(end) if end is not None else self.length-1
+
+        l = DoublyLinkedList()
+        if nStart is None or nEnd is None or nStart > nEnd:
+            return l
+
+        head = self.__goto_index(nStart)
+        tail = self.__goto_index(nEnd)
+        cur = head
+        while cur is not None and cur != tail:
+            l.add(cur.value)
+            cur = cur.next
+        return l
+
     # function overloading/overriding, __len__ if magic function
     # of python that returns length of an object
     def __len__(self):
