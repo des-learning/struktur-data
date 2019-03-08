@@ -5,13 +5,13 @@ class TestTree(unittest.TestCase):
     def test_empty(self):
         doc = Tree()
         self.assertEqual(None, doc.root)
-        self.assertEqual(0, doc.length())
+        self.assertEqual(0, doc.height())
 
     def test_1_level(self):
         doc = Tree()
         doc.add('html')
         self.assertEqual('html', doc.root.value)
-        self.assertEqual(1, doc.length())
+        self.assertEqual(1, doc.height())
 
     def test_2_level(self):
         doc = Tree()
@@ -22,7 +22,7 @@ class TestTree(unittest.TestCase):
         self.assertEqual(2, len(doc.root.children))
         self.assertEqual('head', doc.root.children[0].value)
         self.assertEqual('body', doc.root.children[1].value)
-        self.assertEqual(2, doc.length())
+        self.assertEqual(2, doc.height())
 
     def test_3_level(self):
         doc = Tree()
@@ -37,7 +37,7 @@ class TestTree(unittest.TestCase):
         self.assertEqual('body', doc.root.children[1].value)
         self.assertEqual('title', head.children[0].value)
         self.assertEqual(1, len(head.children))
-        self.assertEqual(2, head.length())
+        self.assertEqual(2, head.height())
 
     def test_count(self):
         doc = Tree()
