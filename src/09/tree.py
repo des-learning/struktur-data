@@ -23,10 +23,9 @@ class Node:
         #        ''.join([x.render(space+1) for x in self.children]))
 
     def length(self):
-        children_length = 0
-        if len(self.children) > 0:
-            children_length = max([child.length() for child in self.children])
-        return 1 + children_length
+        children_length = [child.length() for child in self.children]
+        children_length.append(0)
+        return 1 + max(children_length)
 
     def __repr__(self):
         return '<Node: {}>'.format(self.value)
