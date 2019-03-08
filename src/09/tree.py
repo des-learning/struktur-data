@@ -43,7 +43,7 @@ class Tree:
             self.root.add(value)
 
     def length(self):
-        return self.root.length()
+        return self.root.length() if self.root is not None else 0
 
     def __repr__(self):
-        return self.root.render()
+        return self.root.render() if self.root is not None else '<Empty Tree>'
